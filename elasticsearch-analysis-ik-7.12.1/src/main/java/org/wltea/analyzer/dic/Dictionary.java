@@ -38,12 +38,10 @@ import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.sql.*;
 import java.util.*;
-import java.util.Date;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.lang3.time.FastDateFormat;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.config.RequestConfig;
@@ -157,6 +155,7 @@ public class Dictionary {
      * @return Dictionary
      */
     public static synchronized void initial(Configuration cfg) {
+        logger.info("ik analysis initialize");
         if (singleton == null) {
             synchronized (Dictionary.class) {
                 if (singleton == null) {
@@ -170,7 +169,7 @@ public class Dictionary {
                     singleton.loadStopWordDict();
 
                     // Step1.开启新的线程重新加载词典
-                    pool.scheduleAtFixedRate(new LoadHotWordHandle(), 5, 10, TimeUnit.SECONDS);
+                    pool.scheduleAtFixedRate(new LoadHotWordHandle(), 3, 10, TimeUnit.SECONDS);
 
                     if (cfg.isEnableRemoteDict()) {
                         // 建立监控线程

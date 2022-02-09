@@ -16,6 +16,6 @@ public class LoadHotWordHandle implements Runnable {
         Dictionary singleton = Dictionary.getSingleton();
         singleton.loadMySQLExtDict();
         singleton.loadMySQLStopWordDict();
-        System.out.println();
+        logger.info("\n");
     }
 }
