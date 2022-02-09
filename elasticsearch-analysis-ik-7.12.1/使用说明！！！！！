@@ -1,0 +1,36 @@
+
+说明：修改了分词源码，支持从MySQL动态更新热词和停词。
+
+使用：
+    1.特别注意版本区分，要严格一致，此版本为7.12.1，安装es也必须是此版本，配置es稳定运行之后，进入下述步骤
+    2.导入SQL脚本，插入自己所需要的数据
+    3.要是不用当前版本，自己下载源码更改也可以，注意在/src/main/assemblies/plugin.xml加入MySQL的jar和其他用到的jar，如下：
+    <dependencySet>
+                <outputDirectory>/</outputDirectory>
+                <useProjectArtifact>true</useProjectArtifact>
+                <useTransitiveFiltering>true</useTransitiveFiltering>
+                <includes>
+                    <include>mysql:mysql-connector-java</include>
+                </includes>
+            </dependencySet>
+            <dependencySet>
+                <outputDirectory>/</outputDirectory>
+                <useProjectArtifact>true</useProjectArtifact>
+                <useTransitiveFiltering>true</useTransitiveFiltering>
+                <includes>
+                    <include>org.apache.commons:commons-lang3</include>
+                </includes>
+    </dependencySet>
+    4.install打包，在/target/releases/下有zip的包，复制到es安装路径的plugin里面，进行解压，文件名随意，然后这个文件里面会有config文件夹和外置打入的一些jar
+    5.在上述步骤提到的config文件夹里面创建jdbc.properties，配置自己的数据库和用户名密码等
+    6.在es安装路径的config里面新建文件java.policy，填入内容：
+    grant {
+      // needed because of the hot reload functionality
+      permission java.net.SocketPermission "*", "connect,resolve";
+      permission java.lang.RuntimePermission "setContextClassLoader";
+      permission java.lang.RuntimePermission "createClassLoader";
+      permission java.lang.RuntimePermission "getClassLoader";
+      permission java.lang.RuntimePermission "accessDeclaredMembers";
+    };
+    7./bin目录运行bat命令，启动es，调用分词接口即可，随后会进行定时任务的动态更新热词
+

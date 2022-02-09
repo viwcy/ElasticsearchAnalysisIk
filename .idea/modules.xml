@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/analysis/elasticsearch-analysis/elasticsearch-analysis.iml" filepath="$PROJECT_DIR$/analysis/elasticsearch-analysis/elasticsearch-analysis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/elasticsearch-analysis-ik-7.12.1/elasticsearch-analysis-ik.iml" filepath="$PROJECT_DIR$/elasticsearch-analysis-ik-7.12.1/elasticsearch-analysis-ik.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/elasticsearch-analysis-ik-7.12.1 (1).iml" filepath="$PROJECT_DIR$/.idea/elasticsearch-analysis-ik-7.12.1 (1).iml" />
+    </modules>
+  </component>
+</project>

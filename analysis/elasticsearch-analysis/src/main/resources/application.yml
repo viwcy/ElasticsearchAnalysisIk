@@ -1,0 +1,20 @@
+server:
+  port: 9000
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/es?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useSSL=false&serverTimezone=Asia/Shanghai&allowMultiQueries=true&useUnicode=true&characterEncoding=utf-8&useAffectedRows=true
+    username: root
+    password: yaoyao0203
+  elasticsearch:
+    rest:
+      uris: http://localhost:9200
+#      uris: http://localhost:9200,http://localhost:9201,http://localhost:9202
+  data:
+    elasticsearch:
+      repositories:
+        enabled: true
+
